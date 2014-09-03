@@ -1,0 +1,79 @@
+README: vim-asciidoc-folding
+============================
+:author: Matthew Todd
+:date: 2014-09-02
+:toc:
+
+
+
+== Introduction
+
+This plugin provides a fold expression for vim to enable folding asciidoc files
+(like this one.)
+
+== Installation
+
+After installing the files, you may need to set the `foldmethod` to `foldexpr`.
+You may want to consider doing this with an autocommand or ftplugin file, so
+it's automatically done whenever you load an asciidoc file.
+
+=== Pathogen et al.
+
+Just drop the files from the git repository in `~/.vim/bundle/`, as you would
+with any other pathogen plugin. Be it just unzipping the files, doing a git
+clone, or a git submodule.
+
+=== Manually
+
+Drop `folding.vim` into `~/.vim/after/ftplugin/asciidoc/`
+
+== Dependencies
+
+This plugin has some dependencies on the asciidoc syntax highlighting. In
+particular, for ignoring any ='s in listing blocks. There isn't a bundled
+asciidoc syntax file nor an official one, as far as I'm aware. So you might
+have to tweak this plugin to work with other syntax highlighters. You can
+always also send me an email or issue if you find one that doesn't work, so
+that I can add support.
+
+== Limitations
+
+This plugin has the limitation that it only supports Atx style sections, not
+Setext style sections.
+
+.Supported
+-----------------------------------------------------------
+ == Level 1
+ 
+ === Level 2
+-----------------------------------------------------------
+
+.Not Supported
+-----------------------------------------------------------
+ Level 1
+ -------
+ 
+ Level 2
+ ~~~~~~~
+-----------------------------------------------------------
+
+
+See http://asciidoctor.org/docs/asciidoc-recommended-practices/ for more info.
+
+
+== Usage
+
+See the included help file for more information on how to use this plugin.
+
+TODO: this help file still needs to be written... In the meantime, you may want
+to look at the documentation provided as part of vim-markdown-folding
+(https://github.com/nelstrom/vim-markdown-folding/)
+
+== License
+
+This plugin was originally based on vim-markdown-plugin, found here
+https://github.com/nelstrom/vim-markdown-folding. At the time of writing, there
+isn't a clear license for that plugin, so it's unclear what license we should
+be using here (as a derivative work.)
+
+
