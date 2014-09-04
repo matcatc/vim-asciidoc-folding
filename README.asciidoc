@@ -63,17 +63,15 @@ See http://asciidoctor.org/docs/asciidoc-recommended-practices/ for more info.
 
 == Usage
 
-See the included help file for more information on how to use this plugin.
+See the included help file (`:help asciidoc-folding) for more information on
+how to use this plugin.
 
-TODO: this help file still needs to be written... In the meantime, you may want
-to look at the documentation provided as part of vim-markdown-folding
-(https://github.com/nelstrom/vim-markdown-folding/)
 
 == License
 
 This plugin was originally based on vim-markdown-plugin, found here
 https://github.com/nelstrom/vim-markdown-folding, copyright (c) Drew Neil and
-distributed under the same terms as Vim iteself. As such, this derivative
+distributed under the same terms as Vim itself. As such, this derivative
 plugin is also distributed under the same terms as Vim itself. See `:help
 license` for more information.
 
