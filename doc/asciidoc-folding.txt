@@ -1,0 +1,84 @@
+*asciidoc-folding.txt*	For Vim version 7.3	Last change: 2014 Sep 03
+
+Original Author: Drew Neil <http://drewneil.com/>
+Author: Matthew Todd <http://github.com/matcatc>
+License: Same terms as Vim itself (see |license|)
+
+CONTENTS						    *asciidoc-folding*
+
+Introduction			|asciidoc-folding-introduction|
+  Stacked folding			|asciidoc-folding-stacked|
+  Nested folding			|asciidoc-folding-nested|
+Configuration			|asciidoc-folding-configuration|
+  Overriding the default style		|g:asciidoc_fold_style|
+  Switching fold style			|asciidoc-folding-:FoldToggle|
+
+============================================================================
+INTRODUCTION				       *asciidoc-folding-introduction*
+
+This plugin, originally based on Drew Niel's vim-markdown-folding, enables you
+to fold asciidoc documents by section headings. It recognizes only the
+Atx-style of headings, as shown below (and described at
+http://asciidoctor.org/docs/asciidoc-recommended-practices/).
+
+    == section level 1
+
+    === section level 2
+
+    ==== section level 3
+
+    ===== section level 4
+
+The alternative Setext style is not currently supported.
+
+Two different folding styles are supported: stacked (the default) and nested.
+
+						    *asciidoc-folding-stacked*
+The stacked folding style creates a flat list of sections. When all folds are
+closed, the outline resembles a fully expanded table of contents. That is, h1,
+h2, h3 etc. headings are all represented equally.
+
+Implementation details: all sections (h1, h2, h3 etc.) initiate a fold with
+foldlevel=1.
+
+						     *asciidoc-folding-nested*
+The nested folding style creates a heirarchical list of sections. When all
+folds are closed (by pressing |zM| or running :set foldlevel=0), the outline
+resembles a table of contents (ToC) that only shows h1 sections.
+
+Opening the h1 folds (by running :set foldlevel=1) reveals the content of that
+section, with any h2 sections outlined as a ToC.
+
+Opening an h2 fold (by running :set foldlevel=2) reveals the content of that
+section, with any h3 sections outlined as a ToC. And so on...
+
+Implementation details: h1 sections initiate a fold with foldlevel=1, h2
+sections initiate a fold with foldlevel=2, and so on.
+
+============================================================================
+CONFIGURATION				      *asciidoc-folding-configuration*
+
+The stacked folding style is the default.
+						       *g:asciidoc_fold_style*
+To make the nested folding style the default, put this in your |vimrc|
+file:>
+    let g:asciidoc_fold_style = 'nested'
+<
+
+						*asciidoc-folding-:FoldToggle*
+You can switch between the stacked and nested folding styles by running
+the command:>
+    :FoldToggle
+<
+
+The fold style is scoped to each window, which means it's possible to use the
+stacked folding style in one split window, and the nested folding style in
+another.
+
+                                           *g:asciidoc_fold_override_foldtext*
+If set to 0, the fold text will not be overriden:>
+    let g:asciidoc_fold_override_foldtext = 0
+<
+
+ vim:tw=78:ts=8:ft=help:norl:
+

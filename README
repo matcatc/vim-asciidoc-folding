@@ -72,8 +72,8 @@ to look at the documentation provided as part of vim-markdown-folding
 == License
 
 This plugin was originally based on vim-markdown-plugin, found here
-https://github.com/nelstrom/vim-markdown-folding. At the time of writing, there
-isn't a clear license for that plugin, so it's unclear what license we should
-be using here (as a derivative work.)
-
+https://github.com/nelstrom/vim-markdown-folding, copyright (c) Drew Neil and
+distributed under the same terms as Vim iteself. As such, this derivative
+plugin is also distributed under the same terms as Vim itself. See `:help
+license` for more information.
 
