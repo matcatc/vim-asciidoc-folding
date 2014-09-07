@@ -38,7 +38,7 @@ function! HeadingDepth(lnum)
   let thisline = getline(a:lnum)
   let hashCount = len(matchstr(thisline, '^=\{2,5}'))
   " Ignore lines with too many ='s (usually block deliminators)
-  if hashCount > 2 && hashCount < 5
+  if hashCount > 1 && hashCount < 5
     let level = hashCount - 1
   endif
 
