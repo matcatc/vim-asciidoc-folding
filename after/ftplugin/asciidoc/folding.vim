@@ -32,13 +32,14 @@ endfunction
 
 function! HeadingDepth(lnum)
   " 5 ='s is deepest section level, according to `asciidoc --help syntax`.
-  " Only 1 is the document header, which isn't really worth folding.
+  " Only 1 = is the document header, which isn't really worth folding, so we
+  " ignore it and subtract one off the count to get the fold level.
   let level=0
   let thisline = getline(a:lnum)
   let hashCount = len(matchstr(thisline, '^=\{2,5}'))
   " Ignore lines with too many ='s (usually block deliminators)
-  if hashCount > 0 && hashCount < 5
-    let level = hashCount
+  if hashCount > 2 && hashCount < 5
+    let level = hashCount - 1
   endif
 
   if level > 0 && LineIsFenced(a:lnum)
