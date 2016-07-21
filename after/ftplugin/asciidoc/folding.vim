@@ -76,7 +76,7 @@ function! s:FoldText()
   let foldsize = (v:foldend - v:foldstart)
   let lineCount = line("$")
   let linecount = '['.foldsize.'/'.lineCount.' line'.(foldsize>1?'s':'').']'
-  let foldpercentage = printf("[%.1f", (foldsize*1.0)/lineCount*100) . "%]"
+  let foldpercentage = "[" . printf((((foldsize*1.0)/lineCount*100)<10?"0":"") . "%.1f", (foldsize*1.0)/lineCount*100) . "%]"
   return indent.' '.foldpercentage.' '.title.' '.linecount
 endfunction
 
