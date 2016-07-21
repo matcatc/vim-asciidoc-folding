@@ -36,9 +36,9 @@ function! HeadingDepth(lnum)
   " ignore it and subtract one off the count to get the fold level.
   let level=0
   let thisline = getline(a:lnum)
-  let hashCount = len(matchstr(thisline, '^=\{2,5}'))
+  let hashCount = len(matchstr(thisline, '^=\{2,5} '))
   " Ignore lines with too many ='s (usually block deliminators)
-  if hashCount > 1 && hashCount < 5
+  if hashCount > 1 && hashCount < 7
     let level = hashCount - 1
   endif
 
