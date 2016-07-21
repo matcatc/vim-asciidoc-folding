@@ -42,7 +42,7 @@ Implementation details: all sections (h1, h2, h3 etc.) initiate a fold with
 foldlevel=1.
 
 						     *asciidoc-folding-nested*
-The nested folding style creates a heirarchical list of sections. When all
+The nested folding style creates a hierarchical list of sections. When all
 folds are closed (by pressing |zM| or running :set foldlevel=0), the outline
 resembles a table of contents (ToC) that only shows h1 sections.
 
@@ -76,7 +76,7 @@ stacked folding style in one split window, and the nested folding style in
 another.
 
                                            *g:asciidoc_fold_override_foldtext*
-If set to 0, the fold text will not be overriden:>
+If set to 0, the fold text will not be overridden:>
     let g:asciidoc_fold_override_foldtext = 0
 <
 
