@@ -8,7 +8,7 @@
 " vim:set fdm=marker:
 
 " Fold expressions {{{1
-function! StackedMarkdownFolds()
+function! StackedAsciidocFolds()
   if HeadingDepth(v:lnum) > 0
     return ">1"
   else
@@ -16,7 +16,7 @@ function! StackedMarkdownFolds()
   endif
 endfunction
 
-function! NestedMarkdownFolds()
+function! NestedAsciidocFolds()
   let depth = HeadingDepth(v:lnum)
   if depth > 0
     return ">".depth
@@ -52,12 +52,12 @@ endfunction
 
 function! LineIsFenced(lnum)
   if exists("b:current_syntax") && b:current_syntax ==# 'asciidoc'
-    " It's cheap to check if the current line has 'markdownCode' syntax group
-    return s:HasSyntaxGroup(a:lnum, 'markdownCode')
+    " It's cheap to check if the current line has 'asciidocListingBlock' syntax group
+    return s:HasSyntaxGroup(a:lnum)
   endif
 endfunction
 
-function! s:HasSyntaxGroup(lnum, targetGroup)
+function! s:HasSyntaxGroup(lnum)
   let syntaxGroup = map(synstack(a:lnum, 1), 'synIDattr(v:val, "name")')
   for value in syntaxGroup
     " Likely dependant on the asciidoc syntax file, so will need to be
@@ -79,34 +79,34 @@ function! s:FoldText()
 endfunction
 
 " API {{{1
-function! ToggleMarkdownFoldexpr()
-  if &l:foldexpr ==# 'StackedMarkdownFolds()'
-    setlocal foldexpr=NestedMarkdownFolds()
+function! ToggleAsciidocFoldexpr()
+  if &l:foldexpr ==# 'StackedAsciidocFolds()'
+    setlocal foldexpr=NestedAsciidocFolds()
   else
-    setlocal foldexpr=StackedMarkdownFolds()
+    setlocal foldexpr=StackedAsciidocFolds()
   endif
 endfunction
-command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
+command! -buffer FoldToggle call ToggleAsciidocFoldexpr()
 
 " Setup {{{1
-if !exists('g:markdown_fold_style')
-  let g:markdown_fold_style = 'stacked'
+if !exists('g:asciidoc_fold_style')
+  let g:asciidoc_fold_style = 'stacked'
 endif
 
-if !exists('g:markdown_fold_override_foldtext')
-  let g:markdown_fold_override_foldtext = 1
+if !exists('g:asciidoc_fold_override_foldtext')
+  let g:asciidoc_fold_override_foldtext = 1
 endif
 
 setlocal foldmethod=expr
 
-if g:markdown_fold_override_foldtext
+if g:asciidoc_fold_override_foldtext
   let &l:foldtext = s:SID() . 'FoldText()'
 endif
 
 let &l:foldexpr =
-  \ g:markdown_fold_style ==# 'nested'
-  \ ? 'NestedMarkdownFolds()'
-  \ : 'StackedMarkdownFolds()'
+  \ g:asciidoc_fold_style ==# 'nested'
+  \ ? 'NestedAsciidocFolds()'
+  \ : 'StackedAsciidocFolds()'
 
 " Teardown {{{1
 " To avoid errors when undo_ftplugin not defined yet
