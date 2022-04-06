@@ -11,6 +11,18 @@ README: vim-asciidoc-folding
 This plugin provides a fold expression for vim to enable folding asciidoc files
 (like this one.)
 
+.Example (taken from this document with Vim 8.2)
+----
+== [05.2%] Introduction [4/77 lines]-------
+== [06.5%] Installation [5/77 lines]-------
+=== [06.5%] Pathogen et al. [5/77 lines]---
+=== [03.9%] Manually [3/77 lines]----------
+== [10.4%] Dependencies [8/77 lines]-------
+== [31.2%] Limitations [24/77 lines]-------
+== [06.5%] Usage [5/77 lines]--------------
+== [09.1%] License [7/77 lines]------------
+----
+
 == Installation
 
 After installing the files, you may need to set the `foldmethod` to `foldexpr`.
